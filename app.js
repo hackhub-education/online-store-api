@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 // connect mongoDB
-mongoose.connect('mongodb://localhost:27017/webdxd');
+mongoose.connect('mongodb://webdxd:webdxd27017@localhost:27017/webdxd');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,13 +31,13 @@ require('./passport');
 // import routers
 const index = require('./routes/index');
 const profile = require('./routes/profile');
-const tweet = require('./routes/tweet');
+const item = require('./routes/item');
 const auth = require('./routes/auth');
 
 // apply router middleware
 app.use('/', index);
 app.use('/profile', profile);
-app.use('/tweet', tweet);
+app.use('/item', item);
 app.use('/auth', auth);
 
 // catch 404 and forward to error handler
@@ -55,7 +55,7 @@ app.use((err, req, res, next)=> {
 /**
  * Get port from environment and store in Express.
  */
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 /**
  * Listen on provided port, on all network interfaces.
