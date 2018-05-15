@@ -5,14 +5,16 @@ const Schema = mongoose.Schema;
 
 const UsersSchema = new Schema({
     name: { type: String, required: true },
-    username: { type: String, required: true },
+    email: { type: String, required: true },
     location: String,
-    bio: String,
-    avatarUrl: { type: String, default: '/img/webdxd.png' },
-    tweets: [{ type: Schema.Types.ObjectId, ref: 'Tweets' }]
+    phone: String,
+    avatarUrl: { type: String, default: '/img/sample-avatar.png' },
+    items: [{ type: Schema.Types.ObjectId, ref: 'Items' }]
 });
 
-UsersSchema.plugin(passportLocalMongoose);
+UsersSchema.plugin(passportLocalMongoose, {
+    usernameField: 'email'
+});
 
 const Users = mongoose.model('Users', UsersSchema);
 

@@ -7,7 +7,7 @@ const router = express.Router();
 // get user profile
 router.get('/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
   try {
-    const user = await Users.findById(req.user._id).populate('tweets');
+    const user = await Users.findById(req.user._id).populate('items');
     res.json({ profile: user, err: null, success: true });
   } catch (err) {
     return res.json({ error: err, success: false })
@@ -17,7 +17,7 @@ router.get('/:id', passport.authenticate('jwt', {session: false}), async (req, r
 // update user profile
 router.put('/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
   try {
-    const user = await Users.findOneAndUpdate({ _id: req.user._id }, req.body, { new: true }).populate('tweets');
+    const user = await Users.findOneAndUpdate({ _id: req.user._id }, req.body, { new: true }).populate('items');
     res.json({ profile: user, err: null, success: true });
   } catch (err) {
     return res.json({ error: err, success: false })

@@ -5,7 +5,6 @@ const passport = require('passport');
 const _ = require('lodash');
 
 const Users = require('../models/users');
-const Tweets = require('../models/tweets');
 
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', { session: false }, (err, user) => {
@@ -24,8 +23,8 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post('/signup', (req, res, next) => {
-  const { username, password } = req.body;
-  Users.register(new Users({ username, name: username }), password, (err) => {
+  const { email, password, name } = req.body;
+  Users.register(new Users({ email, name }), password, (err) => {
     if (err) {
       return res.json({ error: err, success: false });
     }

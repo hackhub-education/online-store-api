@@ -5,7 +5,7 @@ Online store api server.
 
 ## Get Started
 1. Fork this repo, then clone your forked repo.
-2. `cd web-tweet-express`
+2. `cd online-store-api`
 3. Install dependencies: `npm install`.
 4. Run node server: `node app` or `nodemon app` if you have installed `nodemon`.
 
@@ -25,7 +25,7 @@ header: {
 * **Request body:**
 ```
 {
-  username: String,
+  email: String,
   password: String
 }
 ```
@@ -43,8 +43,9 @@ header: {
 * **Request body:**
 ```
 {
-  username: String,
-  password: String
+  email: String,
+  password: String,
+  name: String
 }
 ```
 * **Response**
@@ -57,37 +58,39 @@ header: {
 }
 ```
 
-### GET `/tweet`
-* **Description:** get all tweets.
+### GET `/item`
+* **Description:** get all items.
 * **Response**
 ```
 {
-  tweets: Array,
+  items: Array,
   error: Object,
   success: Bool
 }
 ```
 
-### POST `/tweet` (token required)
-* **Description:** post a new tweet
+### POST `/item` (token required)
+* **Description:** post a new item
 * **Request body:**
 ```
 {
-  content: String,
-  imageUrl: String
+  name: String,
+  description: String,
+  price: Number,
+  imageUrl: String(optional)
 }
 ```
 * **Response**
 ```
 {
-  tweet: Object,
+  item: Object,
   error: Object,
   success: Bool
 }
 ```
-### DELETE `/tweet/:id` (token required)
-* **Description:** delete a tweet.
-* **Url params:** mongo object id of the tweet
+### DELETE `/item/:id` (token required)
+* **Description:** delete an item.
+* **Url params:** mongo object id of the item
 * **Response**
 ```
 {
@@ -114,10 +117,10 @@ header: {
 * **Request body:**
 ```
 {
-  name: String,
-  location: String,
-  bio: String,
-  avatarUrl: String
+  name: String(optional),
+  location: String(optional),
+  phone: String(optional),
+  avatarUrl: String(optional)
 }
 ```
 * **Response**
