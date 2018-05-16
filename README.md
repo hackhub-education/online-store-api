@@ -11,7 +11,7 @@ Online store api server.
 
 ## API List
 
-### Host: https://store-api.webdxd.com
+### Host: http://store-api.webdxd.com
 
 ### Note: if the API is `token required`, you need to set your jwt token in the header as below:
 ```
@@ -98,7 +98,6 @@ header: {
   success: Bool
 }
 ```
-
 ### GET `/profile/:id` (token required)
 * **Description:** get profile data for specific user
 * **Url params:** mongo object id of the user
@@ -110,7 +109,6 @@ header: {
   success: Bool
 }
 ```
-
 ### PUT `/profile/:id` (token required)
 * **Description:** update profile data for specific user
 * **Url params:** mongo object id of the user
